@@ -1,0 +1,60 @@
+<form [formGroup]="ProductForm" (ngSubmit)="onSubmit()">
+  <h1>Fancy Text Inputs</h1>
+  <div class="bg">
+  <div class="question">    
+    <label>Code</label>
+    <input type="text" formControlName="product_code" placeholder="Product Code" matTooltip="Enter Product Code" class="form-control" required/>
+    <span *ngIf="!ProductForm.get('product_code').value && ProductForm.get('product_code').touched"></span>
+  </div><br>
+  <div class="question">
+    <label>Name</label>
+    <input type="text" formControlName="product_name" placeholder="Product Name" matTooltip="Enter Product Name" class="form-control" required/>
+    <span *ngIf="!ProductForm.get('product_name').value && ProductForm.get('product_name').touched"></span>
+  </div><br>
+  <div class="question">
+    <label>Category</label>
+    <input type="text" formControlName="category" placeholder="Catagory" matTooltip="Enter Catagory" class="form-control" required/>
+    <span *ngIf="!ProductForm.get('category').value && ProductForm.get('category').touched"></span>
+  </div><br>
+  <div class="question">
+    <label>Unit</label>
+    <input type="text" formControlName="unit" placeholder="Unit" matTooltip="Enter Unit" class="form-control" required/>
+    <span *ngIf="!ProductForm.get('unit').value && ProductForm.get('unit').touched"></span>
+  </div><br>
+  <div class="question">
+    <label>Price</label>
+    <input type="text" formControlName="price" placeholder="Price" matTooltip="Enter Price" class="form-control" required/>
+    <span *ngIf="!ProductForm.get('price').value && ProductForm.get('price').touched"></span>
+  </div><br>
+  <div class="question">
+    <label>By</label>
+    <input type="text" formControlName="create_by" placeholder="By" matTooltip="Enter Create by" class="form-control"required/>
+    <span *ngIf="!ProductForm.get('create_by').value && ProductForm.get('create_by').touched"></span>
+  </div></div><br>
+  <button class="button"type="submit" mat-raised-button color="accent"matTooltip="Click Submit Button" >Submit</button>
+</form><br>
+<div class="container">
+  <h2>ALL PRODUCTS IN STORE</h2>
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Product</div>
+      <div class="col col-2">Name</div>
+      <div class="col col-3">Category</div>
+      <div class="col col-4">Unit</div>
+      <div class="col col-5">Price</div>
+      <div class="col col-6">Date</div>
+      <div class="col col-7">By</div>
+    </li>
+    <li class="table-row" *ngFor="let product of data">
+      <img src={{product.image}} width='200' height="200">
+      <div class="col col-2" data-label="Product Name">{{product.product_name}} <br><span><button>restock</button></span></div>
+      <div class="col col-3" data-label="Category">{{product.category}}</div>
+      <div class="col col-4" data-label="Unit">{{product.unit}}</div>
+      <div class="col col-5" data-label="Price">{{product.price}}</div>
+      <div class="col col-5" data-label="Price">{{product.create_date}}</div>
+      <div class="col col-5" data-label="Price">{{product.create_by}}</div>
+      <button type="button" class="btn btn-info"matTooltip="Click Edit Button"(click)="onClick(product)">Edit</button>
+      <button type="button" class="btn btn-info"matTooltip="Click Edit Button"(click)="deleteProduct(product)">Delete</button>
+    </li>
+  </ul>
+</div>

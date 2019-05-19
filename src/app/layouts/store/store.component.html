@@ -1,0 +1,26 @@
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class='row'>
+  <div class='product' *ngFor="let product of data">
+    <div class='product_inner'>
+      <div >
+      <div class="image-code">
+          <img src={{product.image}} width='200'>
+          <div class="code" *matCellDef="let row">{{product.product_ID}}123</div>
+      </div>
+      <div class="des-product">
+        <div class="name-product">Name: <span>{{product.product_name}}</span></div>
+        <div class="category-product">Category: <span>{{product.category}}</span></div>
+        <div class="price-per-unit">Price: <span>{{product.price}}/<sub>{{product.unit}}</sub></span></div>
+      </div>
+    </div>
+      <button>Add to basket</button>
+    </div>
+    <!--  -->
+    <div class='product_overlay'>
+      <h2>Added to basket</h2>
+      <i class='fa fa-check'></i>
+    </div>
+    <!--  -->
+  </div>
+</div>
